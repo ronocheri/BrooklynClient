@@ -1,0 +1,16 @@
+
+
+<div style="margin: auto;" >
+<h1 style="font-size: 5em;text-align: center;">Log In</h1>
+<form id="myForm" (submit)="loginUser($event) " style=" max-width: 350px;margin: auto;">
+    <label id=passError></label>
+    <input id="uname" name="uname" data-role="none" type="text" placeholder="username"  data-clear-btn="true"><br>
+
+    <label id=repassError></label>
+    <input id="pass" name="pass" data-role="none" type="password" placeholder="password" data-clear-btn="true"><br>
+    <input  id="submit" data-icon="check"  type="submit"style="background-color:#3382cc; color: white; text-shadow:none; width: 347px !important;" data-role="button">
+  </form>
+  <!-- <div class="center"></div> -->
+  <a [routerLink]="['/registerUser']" class="center">Register</a>
+  
+</div>

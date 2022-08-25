@@ -1,0 +1,8 @@
+<ul class="contacts">
+    <li *ngFor="let contact of contacts | sortPipe">
+      <button [class.selected]="contact === selectedContact" type="button" (click)="onSelect(contact)">
+        <img src={{contact.image}}>
+        <span style="width: 100%;text-align: center" class="name"><b>{{contact.firstName+" "+contact.lastName}}</b></span>
+      </button>
+    </li>
+  </ul>

@@ -1,0 +1,43 @@
+<body style="background-color: hsl(212, 48%, 70%); ">
+  <table style="width:100% ">
+
+<tr>
+  <td style="width:30%" id="contactsList">
+<ul class="contacts">
+  <li *ngFor="let contact of contacts">
+    <button [class.selected]="contact === selectedContact" type="button" (click)="onSelect(contact)">
+      <!-- <span class="badge">{{contact.image}}</span> -->
+      <img src={{contact.image}}>
+      <span style="width: 100%;text-align: center" class="name"><b>{{contact.firstName+" "+contact.lastName}}</b></span>
+    </button>
+  </li>
+</ul>
+</td>
+<td id="profileCard" style="vertical-align:top;" >
+<div *ngIf="selectedContact">
+
+  <h2>{{selectedContact?.firstName+" "+selectedContact?.lastName  | uppercase}}</h2>
+  <img src={{selectedContact.image}} style="height: 20em;">
+  <div><b><u>Email:</u></b> {{selectedContact.email}}</div>
+  <div><b><u>Description:</u></b> {{selectedContact.desc}}</div>
+ </div>
+
+ <!-- Dynamic comp-->
+ <!-- <div class="dinamic"> -->
+  <!-- <button mat-raised-button color="primary" (click)="assignComponent('bla')"> -->
+    <!-- <button mat-raised-button color="primary" (click)="register()">
+    bla
+  </button> -->
+  <!-- <button mat-raised-button color="primary" (click)="assignComponent('register-user')"> -->
+    <!-- register-user
+  </button> -->
+<!-- </div> -->
+
+<!-- <div>
+  <h1><ng-container *ngComponentOutlet="dummyComponent"></ng-container></h1>
+</div> -->
+
+</td>
+</tr>
+</table>
+</body>

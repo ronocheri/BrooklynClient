@@ -1,0 +1,14 @@
+insert queries:
+
+Insert into Users VALUES ('Jake','Jake')
+Insert into Users VALUES ('Amy','Amy')
+
+Insert into Contacts VALUES (1,'Jake',
+        'Peralta',
+        'Jake@gmail.com',
+        'Some description about Jake',
+        'https://www.nydailynews.com/resizer/gRTkbzPKWx7KwLOZEja-IerrVuo=/800x1067/top/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/3SPJVKUZWAMK2HP3PR2TEAETBU.jpg')
+		
+		
+		
+		Scaffold-DbContext "Server=DESKTOP-7IMBLDM;Database=BrooklynDB;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models

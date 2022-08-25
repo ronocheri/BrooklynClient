@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" style="height: 50px;" *ngIf="isLoggedIn$ |  async as isLoggedIn">
+  <mat-icon mat-icon-button class="example-icon" (click)="redirectPageTo('home')" aria-label="Example icon-button with home icon" style="color: white; font-size: 40px;    height: 40px;  width: 40px;">home</mat-icon>
+
+
+  <span class="example-spacer"></span>
+  <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>  -->
+  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with account_circle icon">
+    <mat-icon>account_circle</mat-icon>
+  </button> -->
+
+
+    <!-- <mat-icon mat-icon-button class="example-icon" aria-label="Example icon-button with account_circle icon" style="color: white; font-size: 40px;    height: 40px;  width: 40px;">account_circle</mat-icon>
+    <a routerLink="/login"><mat-icon mat-icon-button class="example-icon" aria-label="Example icon-button with logout icon" style="color: white; font-size: 40px;    height: 40px;  width: 40px;">logout</mat-icon></a> -->
+
+    <mat-icon mat-icon-button class="example-icon" (click)="profile()" aria-label="Example icon-button with account_circle icon" style="color: white; font-size: 40px;    height: 40px;  width: 40px;">account_circle</mat-icon>
+    <mat-icon mat-icon-button class="example-icon" (click)="redirectPageTo('help')" aria-label="Example icon-button with help icon" style="color: white; font-size: 40px;    height: 40px;  width: 40px;">help</mat-icon>
+   <mat-icon mat-icon-button class="example-icon" (click)="logout()" aria-label="Example icon-button with logout icon" style="color: white; font-size: 40px;    height: 40px;  width: 40px;">logout</mat-icon>
+
+
+  <!-- <span class="material-icons-round">
+    account_circle
+    </span> -->
+</mat-toolbar>
