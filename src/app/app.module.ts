@@ -12,10 +12,12 @@ import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { RegisterUserComponent } from './components/registerUser/register-user/register-user.component';
 import { HelpComponent } from './components/help/help/help.component';
 import { ContactsListComponent } from './components/contacstList/contacts-list/contacts-list.component';
 import { SortPipePipe } from './pipes/sort-pipe.pipe';
+// import { NgHttpLoaderModule } from 'ng-http-loader';
 
 
 @NgModule({
@@ -28,7 +30,7 @@ import { SortPipePipe } from './pipes/sort-pipe.pipe';
     RegisterUserComponent,
     HelpComponent,
     ContactsListComponent,
-    SortPipePipe,
+    SortPipePipe
     
   ],
   imports: [
@@ -39,7 +41,8 @@ import { SortPipePipe } from './pipes/sort-pipe.pipe';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    
+    MatPaginatorModule,
+    // NgHttpLoaderModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
