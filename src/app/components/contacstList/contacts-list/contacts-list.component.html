@@ -1,8 +1,11 @@
 <ul class="contacts">
-    <li *ngFor="let contact of contacts | sortPipe">
+  <ng-container *ngIf="contacts!=null " >
+    <li  *ngFor="let contact of (contacts | sortPipe )">
       <button [class.selected]="contact === selectedContact" type="button" (click)="onSelect(contact)">
         <img src={{contact.image}}>
-        <span style="width: 100%;text-align: center" class="name"><b>{{contact.firstName+" "+contact.lastName}}</b></span>
+        <span style="width: 100%;text-align: center" class="name"><b>{{contact.firstName+" "+contact.lastName | uppercase}}</b></span>
       </button>
     </li>
+  </ng-container>
   </ul>
+

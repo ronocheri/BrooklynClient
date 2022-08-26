@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CONTACTS } from 'src/app/db';
+// import { CONTACTS } from 'src/app/db';
 import { IContact } from 'src/app/interfaces/contact';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-contacts-list',
@@ -10,7 +11,7 @@ import { IContact } from 'src/app/interfaces/contact';
 })
 export class ContactsListComponent implements OnInit {
 
-contacts: IContact[]=CONTACTS
+public contacts?: IContact[];
 
   // contacts: IContact[]=CONTACTS.sort((a, b) => {
   //   const nameA = a.firstName.toUpperCase(); // ignore upper and lowercase

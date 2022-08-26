@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { IContact } from 'src/app/interfaces/contact';
 import { AuthService } from 'src/app/services/auth.service';
-import { CONTACTS } from '../../db';
+// import { CONTACTS } from '../../db';
 import { RegisterUserComponent } from '../registerUser/register-user/register-user.component';
 
 
@@ -18,6 +19,7 @@ export class HomeComponent implements OnInit {
   //contacts?:Array<IContact>;
   contacts?:Array<IContact>;
   selectedContact?: IContact;
+  public pageSlice?:Array<IContact>=this.contacts?.slice(0,10);
 
     // dummyComponent = BlaComponent;
 
@@ -25,6 +27,7 @@ export class HomeComponent implements OnInit {
 
     Auth.getUserContacts().then((data => {
       this.contacts=data;
+      this.pageSlice=this.contacts;
        //console.log(this.contacts);
  })); 
 
@@ -37,6 +40,21 @@ export class HomeComponent implements OnInit {
     this.selectedContact = contact;
   }
 
+  onPageChange(event:PageEvent)
+  {
+    const stIndex=event.pageIndex*event.pageSize;
+    let endIndex=stIndex+event.pageSize
+
+    if(this.contacts!=null)
+      if(endIndex>this.contacts?.length)
+        endIndex=this.contacts?.length
+    this.pageSlice=this.contacts?.slice(stIndex,endIndex)
+    console.log("endIndex: "+endIndex)
+    // if(endIndex>)
+    // {
+      
+    // }
+  }
   
   // register()
   // {

@@ -4,12 +4,14 @@ import { IUser } from '../interfaces/user';
 import { CanActivate, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AppComponent } from '../app.component';
-import { BehaviorSubject, Observable, Subscriber } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of, Subscriber } from 'rxjs';
+import { IContact } from '../interfaces/contact';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService{
 
+  private URL:string="http://localhost:3000/api/";
   private loggedIn = new BehaviorSubject<boolean>(false); // {1}
   // private loggedIn = new BehaviorSubject<boolean>(false); // {1}
 
@@ -32,7 +34,7 @@ export class AuthService{
   {
       console.log("getUserDetails: "+userName+", "+password)
 
-      let url:string='http://localhost:3000/api/users/isExist' 
+      let url:string=this.URL+'users/isExist' 
 
       let httpOptions:Object = {
         
@@ -78,7 +80,7 @@ export class AuthService{
   {
       console.log("getUserDetails: "+userName+", "+password)
 
-      let url:string='http://localhost:3000/api/users' 
+      let url:string=this.URL+'users' 
 
       
       let httpOptions:Object = {
@@ -122,6 +124,14 @@ export class AuthService{
     let url:string='http://localhost:3000/api/contacts' 
     return this.http.get(url).toPromise();
 }
+
+// getUserContacts(): Observable<IContact[]> {
+//   const url:string=this.URL+'contacts'
+//   return this.http.get<IContact[]>(url)
+//     .pipe(
+//       catchError(this.handleError<IContact[]>('getUserContacts', []))
+//     );
+// }
 
   // getUserContacts()
   // {
@@ -179,5 +189,26 @@ export class AuthService{
   redirectTo(pageName:string){
     this.router.navigateByUrl('/'+pageName)
   }
+
+  /**
+ * Handle Http operation that failed.
+ * Let the app continue.
+ *
+ * @param operation - name of the operation that failed
+ * @param result - optional value to return as the observable result
+ */
+private handleError<T>(operation = 'operation', result?: T) {
+  return (error: any): Observable<T> => {
+
+    // TODO: send the error to remote logging infrastructure
+    console.error(error); // log to console instead
+
+    // TODO: better job of transforming error for user consumption
+    console.log(`${operation} failed: ${error.message}`);
+
+    // Let the app keep running by returning an empty result.
+    return of(result as T);
+  };
+}
 
 }
