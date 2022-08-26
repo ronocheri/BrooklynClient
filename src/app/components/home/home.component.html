@@ -1,4 +1,22 @@
 <body style="background-color: hsl(212, 48%, 70%); ">
+
+  <mat-form-field >
+    <mat-label>Value to sort</mat-label>
+    <mat-select #strToSort (selectionChange)="onSelectedCategory(strToSort.value)">
+      <mat-option value="firstName">firstName</mat-option>
+      <mat-option value="lastName">lastName</mat-option>
+    </mat-select>
+</mat-form-field>
+
+    <mat-form-field >
+    <mat-label>Order</mat-label>
+    <mat-select #orderSort (selectionChange)="onSelectedOrder(orderSort.value)">
+      <mat-option value="asc">asc</mat-option>
+      <mat-option value="desc">desc</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button  type="button" (click)="onSelectSortBtn()">Sort</button>
+
   <table style="width:100% ">
 
 <tr>

@@ -17,6 +17,8 @@ export class HomeComponent implements OnInit {
 
   //contacts=CONTACTS;
   //contacts?:Array<IContact>;
+   strToSort:string='firstName'
+   orderToSort:string='asc'
   contacts?:Array<IContact>;
   selectedContact?: IContact;
   public pageSlice?:Array<IContact>=this.contacts?.slice(0,10);
@@ -28,7 +30,15 @@ export class HomeComponent implements OnInit {
     Auth.getUserContacts().then((data => {
       this.contacts=data;
       this.pageSlice=this.contacts;
-      this.pageSlice?.sort()
+
+      // if(this.pageSlice!=null)
+      //   this.pageSlice=this.sortList(this.pageSlice,'asc','firstName')
+
+      this.pageSlice?.sort((a, b) => {
+        let aLC: string = a.firstName.toLowerCase();
+        let bLC: string = b.firstName.toLowerCase();
+        return aLC < bLC ? -1 : (aLC > bLC ? 1 : 0);
+    });
        //console.log(this.contacts);
  })); 
 
@@ -57,6 +67,51 @@ export class HomeComponent implements OnInit {
     // }
   }
   
+  onSelectSortBtn(): void {
+    console.log(this.orderToSort+" "+this.strToSort)
+    if(this.pageSlice!=null)
+      this.pageSlice=this.sortList(this.pageSlice,this.orderToSort,this.strToSort)
+  }
+
+  //function for dynamic sort
+    sortList(value: any[], sortOrder: string = 'asc', sortKey?: string): any {
+    sortOrder = sortOrder && (sortOrder.toLowerCase() as any);
+
+    if (!value || (sortOrder !== 'asc' && sortOrder !== 'desc')) return value;
+
+    let numberArray = [];
+    let stringArray = [];
+
+    if (!sortKey) {
+      numberArray = value.filter(item => typeof item === 'number').sort();
+      stringArray = value.filter(item => typeof item === 'string').sort();
+    } else {
+      numberArray = value.filter(item => typeof item[sortKey] === 'number').sort((a, b) => a[sortKey] - b[sortKey]);
+      stringArray = value
+        .filter(item => typeof item[sortKey] === 'string')
+        .sort((a, b) => {
+          if (a[sortKey] < b[sortKey]) return -1;
+          else if (a[sortKey] > b[sortKey]) return 1;
+          else return 0;
+        });
+    }
+    const sorted = numberArray.concat(stringArray);
+    return sortOrder === 'asc' ? sorted : sorted.reverse();
+  }
+
+  //on change category
+  onSelectedCategory(categotySort:string): void {
+    console.log(categotySort)
+		this.strToSort = categotySort;
+  }
+
+
+   //on change order
+   onSelectedOrder(orderSort:string): void {
+    console.log(orderSort)
+		this.orderToSort = orderSort;
+  }
+
   // register()
   // {
   //   this.route.navigate(['/registerUser']);  

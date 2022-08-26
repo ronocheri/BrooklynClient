@@ -17,7 +17,9 @@ import { RegisterUserComponent } from './components/registerUser/register-user/r
 import { HelpComponent } from './components/help/help/help.component';
 import { ContactsListComponent } from './components/contacstList/contacts-list/contacts-list.component';
 import { SortPipePipe } from './pipes/sort-pipe.pipe';
-// import { NgHttpLoaderModule } from 'ng-http-loader';
+ import { NgHttpLoaderModule } from 'ng-http-loader';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { SortPipePipe } from './pipes/sort-pipe.pipe';
     MatToolbarModule,
     MatIconModule,
     MatPaginatorModule,
-    // NgHttpLoaderModule.forRoot(),
+     NgHttpLoaderModule.forRoot(),
+     MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
