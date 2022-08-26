@@ -3,6 +3,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { IContact } from 'src/app/interfaces/contact';
 import { AuthService } from 'src/app/services/auth.service';
+
 // import { CONTACTS } from '../../db';
 import { RegisterUserComponent } from '../registerUser/register-user/register-user.component';
 
