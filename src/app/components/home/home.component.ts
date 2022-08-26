@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
     Auth.getUserContacts().then((data => {
       this.contacts=data;
       this.pageSlice=this.contacts;
+      this.pageSlice?.sort()
        //console.log(this.contacts);
  })); 
 
