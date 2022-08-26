@@ -19,8 +19,9 @@ import { ContactsListComponent } from './components/contacstList/contacts-list/c
 import { SortPipePipe } from './pipes/sort-pipe.pipe';
  import { NgHttpLoaderModule } from 'ng-http-loader';
 import { MatSelectModule } from '@angular/material/select';
-
-
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './components/counter.reducer';
+import {  MyCounterComponent} from 'src/app/components/my-counter/my-counter.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { MatSelectModule } from '@angular/material/select';
     RegisterUserComponent,
     HelpComponent,
     ContactsListComponent,
-    SortPipePipe
+    SortPipePipe,
+    MyCounterComponent
     
   ],
   imports: [
@@ -45,7 +47,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatIconModule,
     MatPaginatorModule,
      NgHttpLoaderModule.forRoot(),
-     MatSelectModule
+     MatSelectModule,
+     StoreModule.forRoot({ count: counterReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]
